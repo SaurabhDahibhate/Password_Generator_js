@@ -45,6 +45,10 @@ function displaypass(passlength, generatedPassword) {
   if (passlength !== 0) {
     generatedPasswordElement.textContent = `${generatedPassword} `;
     windowlength.textContent = ` ${passlength}`;
+    const copyButton = document.querySelector(".copy-icon");
+    copyButton.addEventListener("click", () =>
+      copyToClipboard(generatedPassword)
+    );
   } else {
     generatedPasswordElement.textContent = `Please Enter number to generate password`;
   }
@@ -63,6 +67,17 @@ function generateAndLogPassword() {
 
   let generatedPassword = generatePassword(passlength, inputelement);
   displaypass(passlength, generatedPassword);
+}
+
+function copyToClipboard(text) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textarea);
+
+  alert("Password copied to clipboard!");
 }
 
 function checkboxCheck() {
