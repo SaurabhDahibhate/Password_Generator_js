@@ -45,7 +45,7 @@ function displaypass(passlength, generatedPassword) {
   if (passlength !== 0) {
     generatedPasswordElement.textContent = `${generatedPassword} `;
     windowlength.textContent = ` ${passlength}`;
-    const copyButton = document.querySelector(".copy-icon");
+    const copyButton = document.querySelector(".copy");
     copyButton.addEventListener("click", () =>
       copyToClipboard(generatedPassword)
     );
